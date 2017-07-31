@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="javascripts/jquery-3.2.1.js" ></script>
+		<script>
+		/*	$.ajax({
+				type:"get",
+				url:"https://tcc.taobao.com/cc/json/mobile_tel_segment.htm?tel=15940471397",
+				async:true,
+				dataType:"jsonp",
+				success:function(data)
+				{
+					console.log(data);
+				},
+				error:function(err)
+				{
+					console.log(err);
+				}
+			});*/
+			
+			/*var p = $.ajax({
+				type:"get",
+				url:"https://tcc.taobao.com/cc/json/mobile_tel_segment.htm?tel=15940471397",
+				async:true,
+				dataType:"jsonp"				
+			});
+			
+			p.then(function(data){console.log(data)})
+			 .catch(function(err){})*/
+			 
+			//es2017 async await			
+			async function getcell()
+			{
+				try
+				{
+					var data = await $.ajax({
+					type:"get",
+					url:"https://tcc.taobao.com/cc/json/mobile_tel_segment.htm?tel=15940471397",
+					async:true,
+					dataType:"jsonp"				
+				   });				    
+				   return data;
+				}
+				catch(e)
+				{
+					console.log(e);
+				}			   
+			}
+			
+			var p = getcell();
+			p.then(function(data){console.log(data)});
+			console.log("done");
+			
+			
+		/*	var p2 = $.ajax({
+				type:"get",
+				url:"https://tcc.taobao.com/cc/json/mobile_tel_segment.htm?tel=15940471393",
+				async:true,
+				dataType:"jsonp",
+				success:function(data)
+				{
+					console.log("p2");
+				}
+			});
+			
+			var p3 = $.ajax({
+				type:"get",
+				url:"https://tcc.taobao.com/cc/json/mobile_tel_segment.htm?tel=18599330287",
+				async:true,
+				dataType:"jsonp",
+				success:function(data)
+				{
+					console.log("p3");
+				}
+			});
+			
+			Promise.all([p,p2,p3]).then(function(data){
+				
+				console.log(data[0]);
+				console.log(data[1]);
+				console.log(data[2]);
+				console.log("done");
+				
+			})
+			.catch(function(err){})
+			*/
+			
+			
+			
+			/*p.then(function(data){
+				console.log(data);
+			}).catch(function(err){
+				
+				console.log(err);
+			})*/
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

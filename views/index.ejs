@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css" />
+	</head>
+	<body>
+		<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Brand</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Link</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form class="navbar-form navbar-left">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form> 
+
+		<%
+			 if(username!="")
+			 {
+		%>
+		   <button type="button" class="btn btn-primary btn-lg">注销</button>  
+		   <span>欢迎<%=username%></span>
+		<%
+			}else
+			 {
+		%>
+
+		<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+		  登录
+		</button>
+		      <!-- Button trigger modal -->
+		<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal2">
+		  注册
+		</button>
+
+		<%	 	
+			 }
+		%>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+          <form action="/users/login" method="post">
+			  <div class="form-group">
+			    <label for="exampleInputEmail1">Username</label>
+			    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Username" name="username">
+			  </div>
+			  <div class="form-group">
+			    <label for="exampleInputPassword1">Password</label>
+			    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="pwd">
+			  </div>
+
+			  <button type="submit" class="btn btn-default">Submit</button>
+			</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+         <form action="/users/reg" method="post" enctype='multipart/form-data'>
+			  <div class="form-group">
+			    <label for="exampleInputEmail1">Username</label>
+			    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Email" name="username">
+			  </div>
+			  <div class="form-group">
+			    <label for="exampleInputPassword1">Password</label>
+			    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="pwd">
+			  </div>
+			  <div class="form-group">
+			    <label for="exampleInputFile">File input</label>
+			    <input type="file" id="exampleInputFile" name="photo">		 
+			  </div>
+			  <div class="form-group">
+			    <label for="exampleInputDate">Birthday</label>
+			    <input type="date" id="exampleInputDate" name="birthday">		 
+			  </div>
+			  <button type="submit" class="btn btn-default">Submit</button>
+			</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+         <form action="/users/update" method="post">
+			  <div class="form-group">
+			    <label for="exampleInputEmail1">Username</label>
+			    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Email" name="username">
+			  </div>
+			  <div class="form-group">
+			    <label for="exampleInputPassword1">Password</label>
+			    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="pwd">
+			  </div>
+			  <div class="form-group">
+			    <label for="exampleInputFile">File input</label>
+			    <input type="file" id="exampleInputFile" name="photo">		 
+			  </div>
+			  <div class="form-group">
+			    <label for="exampleInputDate">Birthday</label>
+			    <input type="date" id="exampleInputDate" name="birthday" >		 
+			  </div>
+			  <input type="hidden" name="id" />
+			  <button type="submit" class="btn btn-default">Submit</button>
+			</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+      <table class="table table-hover" id="tab1">
+			<tr>
+				<th>ID</th>
+				<th>用户名</th>
+				<th>密码</th>
+				<th>生日</th>
+				<th>头像</th>	
+				<th></th>	
+			</tr>
+	  </table>
+
+		<script type="text/javascript" src="/jquery/dist/jquery.js" ></script>
+		<script type="text/javascript" src="/bootstrap/dist/js/bootstrap.js" ></script>
+		
+		<script>
+		    
+		
+		    function deleteuser(id)
+			{
+				$.ajax({
+					type:"delete",
+					url:"/users/delete/"+id,
+					async:true,
+					dataType:"json",
+					success:function(data)
+					{
+						if(data.result == "删除成功")
+						{
+							//删除行
+							$("[data-id="+id+"]").remove();
+							alert("删除成功");
+						}
+						else
+						{
+							alert("删除失败");
+						}
+					}
+				});
+			}
+			$.ajax({
+				type:"get",
+				url:"/users/listusers",
+				async:true,
+				dataType:"json",
+				success:function(data)
+				{
+					for(var i=0; i<data.length;i++)
+					{
+						$("#tab1").append("<tr data-id='"+data[i]._id+"'><td>"+data[i]._id+"</td><td>"+data[i].uname+"</td><td>"+data[i].pwd+"</td><td>"+data[i].birthday+"</td><td><a href='/users/download/" + data[i].photo + "' download target='_blank'><img width='50px' height='50px' src='/files/" + data[i].photo + "'/></a></td><td><a href='javascript:deleteuser(" + data[i]._id + ")'>删除</a></td></tr>")
+				   }
+
+				  
+				}
+				});
+				
+				
+			$(function(){
+
+				$(document).on("click", "#tab1 tr",function(){
+					
+					$("#myModal3 [name=id]").val($(this).children("td:first").html());
+					$("#myModal3 [name=username]").val($(this).children("td:eq(1)").html());
+					$("#myModal3 [name=pwd]").val($(this).children("td:eq(2)").html());
+					$("#myModal3 [name=birthday]").val($(this).children("td:eq(3)").html());
+					
+					$("#myModal3").modal('show');
+					
+				});
+				
+			})
+			
+			</script>
+		
+		
+		
+	</body>
+</html>
+
